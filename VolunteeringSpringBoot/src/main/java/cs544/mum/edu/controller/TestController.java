@@ -1,4 +1,4 @@
-package cs544.mum.edu.control;
+package cs544.mum.edu.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
