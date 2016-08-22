@@ -25,13 +25,23 @@ public class Task {
 	@Lob byte[] image;
 	private String resourceRequired;
 	
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
+
 	@ManyToOne
 	@JoinColumn(name="userId")
 	private User user;
 
 	public Task() {
 	}
+	public Project getProject() {
+		return project;
+	}
 
+	public void setProject(Project project) {
+		this.project = project;
+	}
 	public int getTaskId() {
 		return taskId;
 	}
