@@ -3,7 +3,9 @@ package cs544.mum.edu.controller;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -22,6 +24,15 @@ public class UserController {
         return "redirect:"+view;
     }
 
+    @RequestMapping(value="/register", method = RequestMethod.GET)
+    public String saveUser(Model model){
+        return "register";
+    }
+
+    @RequestMapping(value="/register", method = RequestMethod.POST)
+    public String saveUserForm(Model model){
+        return "reditect:/save";
+    }
     public boolean userHasAuthority(String authority)
     {
         List<GrantedAuthority> authorities = getUserAuthorities();
