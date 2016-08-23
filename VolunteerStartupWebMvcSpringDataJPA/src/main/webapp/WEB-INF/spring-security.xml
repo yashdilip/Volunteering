@@ -1,0 +1,46 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:sec="http://www.springframework.org/schema/security"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+    <http auto-config="true">
+        <intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
+        <intercept-url pattern="/volunteer/*" access="ROLE_VOLUNTEER" />
+        <sec:logout logout-url="/j_security_logout"/>
+        <sec:logout logout-success-url="/views/login.jsp"/>
+        <session-management invalid-session-url="/views/login.jsp" session-fixation-protection="newSession">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true"
+                                 expired-url="/pages/login.jsp"/>
+        </session-management>
+<!--
+        <remember-me key="admin" user-service-ref="dataSource"/>
+-->
+    </http>
+    <beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <beans:property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <beans:property name="url" value="jdbc:mysql://localhost:3306/volunteering?createDatabaseIfNotExist=true"/>
+        <beans:property name="username" value="root"/>
+        <beans:property name="password" value="root"/>
+    </beans:bean>
+
+    <authentication-manager alias="authenticationManager">
+        <!-- first authentication provider-->
+        <authentication-provider>
+        <jdbc-user-service data-source-ref="dataSource"/>
+        </authentication-provider>
+         <!--second authentication provider. will check this if first one fails-->
+         <!--we can put more providers-->
+        <authentication-provider>
+            <user-service>
+                <user name="admin" password="admin" authorities="ROLE_ADMIN" />
+                <user name="user" password="user" authorities="ROLE_VOLUNTEER" />
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+
+</beans:beans>

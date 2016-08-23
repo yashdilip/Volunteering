@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/constants/Role.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/control/LoginController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/control/ProjectController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/control/TaskController.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/domain/Address.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/domain/Beneficiary.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/domain/Project.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/domain/Resources.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/domain/Task.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/domain/User.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/repository/AddressRepo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/repository/BeneficiaryRepo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/repository/ProjectRepo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/repository/ResourcesRepo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/repository/TaskRepo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/repository/UserRepo.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/service/ILoginService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/service/IProjectService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/service/ITaskService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/service/implementation/LoginServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/service/implementation/ProjectServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/rajiv/projects/service/implementation/TaskServiceImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/users" charset="UTF-8" />
+  </component>
+</project>

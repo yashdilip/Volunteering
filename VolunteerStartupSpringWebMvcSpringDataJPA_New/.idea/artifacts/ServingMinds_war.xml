@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ServingMinds:war">
+    <output-path>$PROJECT_DIR$/../ServingMinds/target</output-path>
+    <root id="archive" name="VolunteerStartupWebMvcSpringDataJPA.war">
+      <element id="artifact" artifact-name="ServingMinds:war exploded" />
+    </root>
+  </artifact>
+</component>
