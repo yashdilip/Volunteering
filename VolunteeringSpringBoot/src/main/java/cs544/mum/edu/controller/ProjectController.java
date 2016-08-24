@@ -122,6 +122,12 @@ public class ProjectController {
         model.addAttribute("projects", projectList);
         return "/users/admin/projectlist";
     }
+    @RequestMapping(value="/project/{projectId}", method=RequestMethod.GET)
+    public String showProject(@PathVariable("projectId") int projectId, Model model){
+    	model.addAttribute("project",projectService.getProjectById(projectId));
+    	return "/users/admin/projectdetail";
+    }
+    
     @RequestMapping(value="/project/edit/{projectId}", method=RequestMethod.GET)
     public String editProject(@PathVariable("projectId") int projectId, Model model){
     	model.addAttribute("project",projectService.getProjectById(projectId));
