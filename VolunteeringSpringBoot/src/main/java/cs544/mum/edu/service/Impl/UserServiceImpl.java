@@ -48,4 +48,13 @@ public class UserServiceImpl implements IUserService{
 		return userRepository.findAll();
 	}
 
+	/* (non-Javadoc)
+	 * @see cs544.mum.edu.service.IUserService#findUserByUserId(java.lang.String)
+	 */
+	@Override
+	public User findUserByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return userRepository.findOne(Integer.valueOf(userId));
+	}
+
 }

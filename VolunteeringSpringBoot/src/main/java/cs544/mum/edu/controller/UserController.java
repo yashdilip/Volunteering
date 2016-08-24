@@ -26,16 +26,16 @@ public class UserController {
         return "redirect:"+view;
     }
 
-    @RequestMapping(value="/register", method = RequestMethod.GET)
+/*    @RequestMapping(value="/register", method = RequestMethod.GET)
     public String saveUser(Model model){
     	model.addAttribute("user", new User());
-        return "register";
+        return "/users/admin/useradd";
     }
 
     @RequestMapping(value="/register", method = RequestMethod.POST)
     public String saveUserForm(Model model){
-        return "reditect:/save";
-    }
+        return "reditect:/showusers";
+    }*/
     public boolean userHasAuthority(String authority)
     {
         List<GrantedAuthority> authorities = getUserAuthorities();

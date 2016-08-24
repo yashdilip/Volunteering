@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,14 +48,37 @@ public class ProjectController {
 	@Autowired
 	BeneficiaryServiceImpl beneficiaryService;
 	
-	/*@Autowired
-	IService service;*/
-	
-    @RequestMapping("/dashboard")
+    @RequestMapping(value="/dashboard", method=RequestMethod.GET)
     public String dashboard(){
         return "/users/admin/admin_dash";
     }
+    
+    @RequestMapping(value="/adduser", method=RequestMethod.GET)
+    public String saveUser(Model model){
+    	model.addAttribute("user", new User());
+        return "/users/admin/useradd";
+    }
 
+    @RequestMapping(value="/adduser", method = RequestMethod.POST)
+    public String saveUserForm(User user, Model model){
+    	addressService.saveAddress(user.getAddress());
+    	userService.create(user);
+    	System.out.println(user.getName());
+        return "redirect:/admin/dashboard";
+    }
+    
+    @RequestMapping(value="/userlist", method=RequestMethod.GET)
+    public String addUser(Model model){
+    	model.addAttribute("users", userService.getAllUsers());
+    	return "/users/admin/userlist";
+    }
+    
+    @RequestMapping(value="user/{userId}", method=RequestMethod.GET)
+    public String showUser(@PathVariable("userId") int userId, Model model){
+    	model.addAttribute("user", userService.findUserByUserId(userId));
+    	return "/users/admin/userdetail";
+    }
+    
     @RequestMapping(value = "addproject", method = RequestMethod.GET)
     public String addProject(Model model){
         Project project = new Project();

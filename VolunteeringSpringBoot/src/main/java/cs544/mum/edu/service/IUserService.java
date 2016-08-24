@@ -19,4 +19,5 @@ public interface IUserService {
 	void create(User user);
 	boolean authenticateUser(User user);
 	List<User> getAllUsers();
+	User findUserByUserId(int userId);
 }
