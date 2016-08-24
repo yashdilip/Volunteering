@@ -18,10 +18,10 @@ public class Project {
 	private String projectname;
 	private String description;
 	private String location;
-	@Temporal(TemporalType.DATE)
-	private Date startDate;
-	@Temporal(TemporalType.DATE)
-	private Date endDate;
+	//@Temporal(TemporalType.DATE)
+	private String startDate;
+	//@Temporal(TemporalType.DATE)
+	private String endDate;
 	
 	@OneToMany
 	@JoinTable(name="PROJECT_TASK", joinColumns = @JoinColumn(name="projectId"),
@@ -75,19 +75,19 @@ public class Project {
 		this.location = location;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

@@ -18,5 +18,6 @@ public interface IProjectService {
 	List<Project> searchProjectByKeyword(String keyword);
 	List<Project> searchProjectByLocation(String location);
 	List<Project> getAllProjectsHavingVolunteer();
-	Project getProjectById(String projectId);
+	Project getProjectById(int projectId);
+	void deleteProject(int projectId);
 }

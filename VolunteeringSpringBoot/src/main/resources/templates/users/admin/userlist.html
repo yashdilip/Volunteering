@@ -23,19 +23,18 @@
 					<th>User Name</th>
 					<th>Email Address</th>
 					<th>Role</th>
-					<th>Address</th>
 				</tr>
 				<tr th:each="user : ${users}">
 					<td th:text="${user.userId}"><a href="/user/${user.userId}">User Id</a></td>
 					<td th:text="${user.name}">User Name</td>
 					<td th:text="${user.email}">Email Address</td>
 					<td th:text="${user.role}">Role</td>
-					<td><a th:href="${'/admin/user/' + user.userId}">View</a></td>
-					<td><a th:href="${'/admin/user/edit/' + user.userId}">Edit</a></td>
-					<td><a th:href="${'/admin/user/delete/' + user.userId}">Delete</a></td>
+					<td><a th:href="${'/admin/user/' + user.userId}" class="btn btn-primary">View</a></td>
+					<td><a th:href="${'/admin/user/edit/' + user.userId}" class="btn btn-warning">Edit</a></td>
+					<td><a th:href="${'/admin/user/delete/' + user.userId}" class="btn btn-danger">Delete</a></td>
 				</tr>
 			</table>
-
+		<a href="/admin/dashboard" class="btn btn-primary">Go to Admin Dashboard</a>
 		</div>
 	</div>
 

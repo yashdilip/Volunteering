@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-    <meta charset="UTF-8"/>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
     <title>Admin Dashboard</title>
+    <meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+<link href="../css/app.css" th:href="@{/css/app.css}" rel="stylesheet"
+	media="screen" />
 </head>
 <body>
-<h1>hello admin</h1>
-<a href="/admin/addproject" >Add Project</a>
-<a href="/admin/adduser" >Add User</a>
-<a href="/admin/userlist" >List All Users</a>
+
+<div class="container">
+    <div th:fragment="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#" th:href="@{/admin/adduser}">Add Users</a></li>
+                        <li><a href="#" th:href="@{/admin/userlist}">List Users </a></li>
+                        <li><a href="#" th:href="@{/admin/addproject}">Add Project </a></li>
+                        <li><a href="#" th:href="@{/admin/projectlist}">List Projects </a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        </div>
+    </div>
 </body>
 </html>

@@ -90,8 +90,16 @@ public class ProjectServiceImpl implements IProjectService{
 	 * @see cs544.mum.edu.service.IProjectService#getProjectById(java.lang.String)
 	 */
 	@Override
-	public Project getProjectById(String projectId) {
+	public Project getProjectById(int projectId) {
 		// TODO Auto-generated method stub
-		return projectRepository.findProjectByProjectId(projectId);
+		return projectRepository.findOne(Integer.valueOf(projectId));
+	}
+	/* (non-Javadoc)
+	 * @see cs544.mum.edu.service.IProjectService#deleteProject(int)
+	 */
+	@Override
+	public void deleteProject(int projectId) {
+		projectRepository.delete(Integer.valueOf(projectId));
+		
 	}
 }

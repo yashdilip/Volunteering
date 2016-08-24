@@ -57,4 +57,13 @@ public class UserServiceImpl implements IUserService{
 		return userRepository.findOne(Integer.valueOf(userId));
 	}
 
+	/* (non-Javadoc)
+	 * @see cs544.mum.edu.service.IUserService#deleteUser(int)
+	 */
+	@Override
+	public void deleteUser(int userId) {
+		// TODO Auto-generated method stub
+		userRepository.delete(Integer.valueOf(userId));
+	}
+
 }

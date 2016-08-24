@@ -17,13 +17,9 @@ import java.util.List;
  *
  */
 @Repository
-public interface ProjectRepository extends JpaRepository<Project, Long> {
+public interface ProjectRepository extends JpaRepository<Project, Integer> {
 	@Query("from Project p where p.projectStatus=:status")
 	List<Project> findAllByStatus(@Param("status") String status);
-
-	@Query("from Project p where p.projectId=:projectId")
-	Project findProjectByProjectId(@Param("projectId") String projectId);
-
 	
 	@Query("from Project p JOIN p.tasks t where t.resourceRequired = :resource")
 	List<Project> findAllByResources(@Param("resource") String resource);

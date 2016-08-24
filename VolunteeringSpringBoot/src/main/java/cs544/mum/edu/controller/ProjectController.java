@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -73,36 +74,65 @@ public class ProjectController {
     	return "/users/admin/userlist";
     }
     
-    @RequestMapping(value="user/{userId}", method=RequestMethod.GET)
+    @RequestMapping(value="/user/{userId}", method=RequestMethod.GET)
     public String showUser(@PathVariable("userId") int userId, Model model){
     	model.addAttribute("user", userService.findUserByUserId(userId));
     	return "/users/admin/userdetail";
     }
+    @RequestMapping(value="/user/edit/{userId}", method=RequestMethod.GET)
+    public String editUser(@PathVariable("userId") int userId, Model model){
+    	model.addAttribute("user", userService.findUserByUserId(userId));
+    	return "/users/admin/useredit";
+    }
     
+    @RequestMapping(value="/user/delete/{userId}", method=RequestMethod.GET)
+    public String deleteUser(@PathVariable("userId") int userId, Model model){
+    	userService.deleteUser(userId);
+    	return "redirect:/admin/dashboard";
+    }
     @RequestMapping(value = "addproject", method = RequestMethod.GET)
     public String addProject(Model model){
-        Project project = new Project();
-        model.addAttribute("project", project);
-        try {
+        model.addAttribute("project", new Project());
+        return "/users/admin/addproject";
+    }
+    @RequestMapping(value = "addproject", method = RequestMethod.POST)
+    public String addProjectFormProcess(Project project){
+    	for(User u:project.getUsers()){
+    		addressService.saveAddress(u.getAddress());
+    		userService.create(u);
+    	}
+    	for(Task t:project.getTasks()){
+    		taskService.createTask(t);
+    	}
+    	for(Beneficiary b:project.getBeneficiaries()){
+    		beneficiaryService.createBeneficiary(b);
+    	}    	
+        projectService.createProject(project);
+        return "redirect:/admin/dashboard";
+    }
+    @RequestMapping(value = "/projectlist", method = RequestMethod.GET)
+    public String getAllProjects(Model model){
+    	try {
 			this.saveProject();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        return "/users/admin/addproject";
-    }
-    @RequestMapping(value = "addproject", method = RequestMethod.POST)
-    public String addProjectFormProcess(Project project){
-        projectService.createProject(project);
-        return "redirect:/projects";
-    }
-    @RequestMapping(value = "/projects", method = RequestMethod.GET)
-    public String getAllProjects(Model model){
         List<Project> projectList = projectService.findAllProjects();
-        model.addAttribute("projectList", projectList);
-        return "projects";
+        model.addAttribute("projects", projectList);
+        return "/users/admin/projectlist";
+    }
+    @RequestMapping(value="/project/edit/{projectId}", method=RequestMethod.GET)
+    public String editProject(@PathVariable("projectId") int projectId, Model model){
+    	model.addAttribute("project",projectService.getProjectById(projectId));
+    	return "/users/admin/projectedit";
     }
     
+    @RequestMapping(value="/project/delete/{projectId}", method=RequestMethod.GET)
+    public String deleteProject(@PathVariable("projectId") int projectId, Model model){
+    	projectService.deleteProject(projectId);
+    	return "redirect:/admin/dashboard";
+    }
     public void saveProject() throws IOException{
     			
 		/*for image upload*/

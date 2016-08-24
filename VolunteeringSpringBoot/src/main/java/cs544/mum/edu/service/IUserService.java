@@ -20,4 +20,5 @@ public interface IUserService {
 	boolean authenticateUser(User user);
 	List<User> getAllUsers();
 	User findUserByUserId(int userId);
+	void deleteUser(int userId);
 }
