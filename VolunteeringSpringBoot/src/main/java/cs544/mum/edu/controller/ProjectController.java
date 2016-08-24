@@ -1,5 +1,12 @@
 package cs544.mum.edu.controller;
 
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,16 +19,11 @@ import cs544.mum.edu.domain.Project;
 import cs544.mum.edu.domain.Role;
 import cs544.mum.edu.domain.Task;
 import cs544.mum.edu.domain.User;
-import cs544.mum.edu.service.IService;
-import cs544.mum.edu.service.ProjectServiceImpl;
-import cs544.mum.edu.service.ServiceImpl;
-
-import java.io.IOException;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Arrays;
-import java.util.List;
+import cs544.mum.edu.service.Impl.AddressServiceImpl;
+import cs544.mum.edu.service.Impl.BeneficiaryServiceImpl;
+import cs544.mum.edu.service.Impl.ProjectServiceImpl;
+import cs544.mum.edu.service.Impl.TaskServiceImpl;
+import cs544.mum.edu.service.Impl.UserServiceImpl;
 
 /**
  * Created by Dilip on 8/22/2016.
@@ -34,7 +36,19 @@ public class ProjectController {
 	ProjectServiceImpl projectService;
 	
 	@Autowired
-	IService service;
+	AddressServiceImpl addressService;
+	
+	@Autowired
+	TaskServiceImpl taskService;
+	
+	@Autowired
+	UserServiceImpl userService;
+	
+	@Autowired
+	BeneficiaryServiceImpl beneficiaryService;
+	
+	/*@Autowired
+	IService service;*/
 	
     @RequestMapping("/dashboard")
     public String dashboard(){
@@ -55,7 +69,7 @@ public class ProjectController {
     }
     @RequestMapping(value = "addproject", method = RequestMethod.POST)
     public String addProjectFormProcess(Project project){
-        projectService.createNewProject(project);
+        projectService.createProject(project);
         return "redirect:/projects";
     }
     @RequestMapping(value = "/projects", method = RequestMethod.GET)
@@ -118,12 +132,12 @@ public class ProjectController {
 		p.setBeneficiaries(Arrays.asList(b));
 		
 		/*persisting into database*/
-		service.saveAddress(address);
-		service.saveUser(u);
-		service.saveProjectTask(t1);
-		service.saveProjectTask(t2);
-		service.saveBeneficiary(b);
-		service.saveProject(p);
+		addressService.saveAddress(address);
+		userService.create(u);
+		taskService.createTask(t1);
+		taskService.createTask(t2);
+		beneficiaryService.createBeneficiary(b);
+		projectService.createProject(p);
 		
 		
 		/*project update i.e. assigned user to project*/

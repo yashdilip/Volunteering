@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import cs544.mum.edu.domain.User;
+
 import java.util.List;
 
 /**
@@ -26,6 +28,7 @@ public class UserController {
 
     @RequestMapping(value="/register", method = RequestMethod.GET)
     public String saveUser(Model model){
+    	model.addAttribute("user", new User());
         return "register";
     }
 

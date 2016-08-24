@@ -1,4 +1,4 @@
-package cs544.mum.edu.service;
+package cs544.mum.edu.service.Impl;
 
 import java.util.List;
 
@@ -15,6 +15,7 @@ import cs544.mum.edu.repository.BeneficiaryRepository;
 import cs544.mum.edu.repository.ProjectRepository;
 import cs544.mum.edu.repository.TaskRepository;
 import cs544.mum.edu.repository.UserRepository;
+import cs544.mum.edu.service.IService;
 
 @Component
 public class ServiceImpl implements IService {

@@ -1,15 +1,22 @@
 package cs544.mum.edu.service;
 
-import cs544.mum.edu.domain.Project;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+
+import cs544.mum.edu.domain.Project;
 
 /**
  * Created by Dilip on 8/22/2016.
  */
-@Service
+
 public interface IProjectService {
-    void createNewProject(Project project);
-    public List<Project> findAllProjects();
+    void createProject(Project project);
+	void updateProjectAssignedToUser(Project project);
+	List<Project> findAllProjects();
+	List<Project> getAllProjects();
+	List<Project> getAllProjectsByStatus(String status);
+	List<Project> searchProjectByResource(String resource);
+	List<Project> searchProjectByKeyword(String keyword);
+	List<Project> searchProjectByLocation(String location);
+	List<Project> getAllProjectsHavingVolunteer();
+	Project getProjectById(String projectId);
 }
