@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import cs544.mum.edu.domain.Address;
+import cs544.mum.edu.domain.Project;
 import cs544.mum.edu.domain.User;
 
 /**
@@ -21,4 +22,5 @@ public interface IUserService {
 	List<User> getAllUsers();
 	User findUserByUserId(int userId);
 	void deleteUser(int userId);
+	List<User> searchUserByKeyword(String keyword);
 }

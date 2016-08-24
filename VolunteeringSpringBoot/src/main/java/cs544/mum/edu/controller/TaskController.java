@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cs544.mum.edu.domain.Beneficiary;
 import cs544.mum.edu.domain.Project;
@@ -77,4 +80,12 @@ public class TaskController {
         projectService.createProject(project);
         return "redirect:/volunteeer/dashboard";
     }
+	@RequestMapping(value = "/searchProject", method = RequestMethod.POST)
+	public ModelAndView searchProject(@RequestParam("searchText") String searchText, RedirectAttributes redirectAttributes) {
+		List<Project> projects = projectService.searchProjectByKeyword(searchText);
+		String viewPath = "/users/volunteer/projectlist";
+		ModelAndView modelAndView = new ModelAndView(viewPath);
+		modelAndView.addObject("projects", projects);
+		return modelAndView;
+	}
 }

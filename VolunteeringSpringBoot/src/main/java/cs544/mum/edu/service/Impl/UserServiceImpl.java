@@ -66,4 +66,13 @@ public class UserServiceImpl implements IUserService{
 		userRepository.delete(Integer.valueOf(userId));
 	}
 
+	/* (non-Javadoc)
+	 * @see cs544.mum.edu.service.IUserService#searchUserByKeyword(java.lang.String)
+	 */
+	@Override
+	public List<User> searchUserByKeyword(String keyword) {
+		// TODO Auto-generated method stub
+		return userRepository.findAllUserByKeyword(keyword);
+	}
+
 }
